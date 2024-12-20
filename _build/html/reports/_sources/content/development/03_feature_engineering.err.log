@@ -1,0 +1,339 @@
+Traceback (most recent call last):
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\jupyter_core\utils\__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASHISH\anaconda3\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+#Experiment 3
+import os
+import pandas as pd
+import numpy as np
+import sqlite3
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+import mlflow
+import mlflow.sklearn
+import logging
+from datetime import datetime
+
+# Set up MLflow
+os.environ['MLFLOW_TRACKING_USERNAME'] = 'ashiashish100'
+os.environ['MLFLOW_TRACKING_PASSWORD'] = '7af28a60cc2f6e231f6413c9b48e241766a2e931'
+mlflow.set_tracking_uri("https://dagshub.com/ashiashish100/my-first-repo.mlflow")
+mlflow.set_experiment("mental_health_feature_engineering")
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def load_base_data():
+    conn = sqlite3.connect('mental_health_final.db')
+    query = """
+    SELECT 
+        e.age,
+        e.gender,
+        e.country,
+        emp.company_size,
+        emp.is_tech_company,
+        emp.work_remotely,
+        mhb.has_mental_health_benefits,
+        mhh.current_disorder,
+        mhh.sought_treatment,
+        wc.discuss_with_supervisor,
+        wc.discuss_with_coworkers,
+        wc.observed_negative_consequences,
+        wc.interferes_with_work
+    FROM employees e
+    LEFT JOIN employment emp ON e.employee_id = emp.employee_id
+    LEFT JOIN mental_health_benefits mhb ON e.employee_id = mhb.employee_id
+    LEFT JOIN mental_health_history mhh ON e.employee_id = mhh.employee_id
+    LEFT JOIN workplace_communication wc ON e.employee_id = wc.employee_id
+    """
+    return pd.read_sql_query(query, conn)
+
+def engineer_features(df):
+    #Perform feature engineering
+    df = df.copy()
+    
+    # 1. Age-based features
+    df['age_group'] = pd.qcut(df['age'], q=5, labels=['very_young', 'young', 'middle', 'senior', 'very_senior'])
+    
+    # 2. Company size normalization
+    size_map = {
+        '1-25': 1,
+        '26-100': 2,
+        '100-500': 3,
+        '500-1000': 4,
+        '1000+': 5
+    }
+    df['company_size_normalized'] = df['company_size'].map(size_map)
+    
+    # 3. Communication comfort score
+    df['communication_score'] = 0
+    df.loc[df['discuss_with_supervisor'] == 'yes', 'communication_score'] += 1
+    df.loc[df['discuss_with_coworkers'] == 'yes', 'communication_score'] += 1
+    
+    # 4. Remote work interaction
+    df['remote_with_benefits'] = ((df['work_remotely'] != 'never') & 
+                                 (df['has_mental_health_benefits'] == 'yes')).astype(int)
+    
+    # 5. Tech environment score
+    df['tech_environment_score'] = df['is_tech_company'] * df['company_size_normalized']
+    
+    # 6. Workplace support index
+    df['workplace_support_index'] = (
+        (df['has_mental_health_benefits'] == 'yes').astype(int) +
+        (df['discuss_with_supervisor'] == 'yes').astype(int) +
+        (df['observed_negative_consequences'] == 'no').astype(int)
+    )
+    
+    # 7. Work impact indicator
+    df['work_impact_severity'] = pd.Categorical(
+        df['interferes_with_work'],
+        categories=['never', 'rarely', 'sometimes', 'often', 'always'],
+        ordered=True
+    ).codes
+    
+    # Handle missing values
+    df = handle_missing_values(df)
+    
+    return df
+
+def handle_missing_values(df):
+    #Handle missing values in the dataset
+    # Numeric columns
+    numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+    for col in numeric_cols:
+        df[col] = df[col].fillna(df[col].median())
+    
+    # Categorical columns
+    categorical_cols = df.select_dtypes(include=['object']).columns
+    for col in categorical_cols:
+        df[col] = df[col].fillna('unknown')
+    
+    return df
+
+def create_feature_sets():
+    #Create different feature sets for experimentation
+    feature_sets = {
+        'base_features': [
+            'age', 'gender', 'country', 'company_size', 'is_tech_company', 
+            'work_remotely', 'has_mental_health_benefits', 'current_disorder'
+        ],
+        
+        'engineered_only': [
+            'age_group', 'company_size_normalized', 'communication_score',
+            'remote_with_benefits', 'tech_environment_score', 
+            'workplace_support_index', 'work_impact_severity'
+        ],
+        
+        'combined_features': [
+            'age', 'gender', 'country', 'is_tech_company', 'work_remotely',
+            'company_size_normalized', 'communication_score',
+            'workplace_support_index', 'work_impact_severity',
+            'tech_environment_score'
+        ],
+        
+        'communication_focused': [
+            'discuss_with_supervisor', 'discuss_with_coworkers',
+            'observed_negative_consequences', 'interferes_with_work',
+            'communication_score', 'workplace_support_index'
+        ]
+    }
+    return feature_sets
+
+def run_experiment(X, y, feature_set_name, features):
+    #Run experiment with specific feature set
+    with mlflow.start_run(run_name=f"feature_eng_{feature_set_name}"):
+        # Log feature set
+        mlflow.log_param("feature_set", feature_set_name)
+        mlflow.log_param("n_features", len(features))
+        mlflow.log_param("features", ", ".join(features))
+        
+        # Split data
+        X_train, X_test, y_train, y_test = train_test_split(
+            X[features], y, test_size=0.2, random_state=42, stratify=y
+        )
+        
+        # Create preprocessing pipeline
+        numeric_features = X[features].select_dtypes(include=['int64', 'float64']).columns
+        categorical_features = X[features].select_dtypes(include=['object']).columns
+        
+        preprocessor = ColumnTransformer(
+            transformers=[
+                ('num', StandardScaler(), numeric_features),
+                ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features)
+            ])
+        
+        # Create and train pipeline
+        model = Pipeline([
+            ('preprocessor', preprocessor),
+            ('classifier', LogisticRegression(random_state=42))
+        ])
+        
+        # Perform cross-validation
+        cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring='f1')
+        
+        # Train and evaluate
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        
+        # Calculate metrics
+        metrics = {
+            'accuracy': accuracy_score(y_test, y_pred),
+            'f1_score': f1_score(y_test, y_pred),
+            'precision': precision_score(y_test, y_pred),
+            'recall': recall_score(y_test, y_pred)
+        }
+        
+        # Log metrics
+        mlflow.log_metric("cv_f1_mean", cv_scores.mean())
+        mlflow.log_metric("cv_f1_std", cv_scores.std())
+        for metric_name, metric_value in metrics.items():
+            mlflow.log_metric(f"test_{metric_name}", metric_value)
+        
+        # Log model
+        mlflow.sklearn.log_model(model, "model")
+        
+        # Print results
+        logger.info(f"\nResults for {feature_set_name}:")
+        logger.info(f"CV F1-Score: {cv_scores.mean():.4f} (+/- {cv_scores.std()*2:.4f})")
+        logger.info("Test Metrics:")
+        for metric_name, metric_value in metrics.items():
+            logger.info(f"{metric_name}: {metric_value:.4f}")
+        
+        return model, metrics
+
+def main():
+    # Load data
+    logger.info("Loading data...")
+    df = load_base_data()
+    
+    # Engineer features
+    logger.info("Engineering features...")
+    df_engineered = engineer_features(df)
+    
+    # Prepare target
+    y = df_engineered['sought_treatment']
+    
+    # Get feature sets
+    feature_sets = create_feature_sets()
+    
+    # Run experiments for each feature set
+    for set_name, features in feature_sets.items():
+        logger.info(f"\nRunning experiment with {set_name}")
+        run_experiment(df_engineered, y, set_name, features)
+
+if __name__ == "__main__":
+    main()
+------------------
+
+----- stderr -----
+INFO:__main__:Loading data...
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mOperationalError[0m                          Traceback (most recent call last)
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:2672[0m, in [0;36mSQLiteDatabase.execute[1;34m(self, sql, params)[0m
+[0;32m   2671[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 2672[0m     cur[38;5;241m.[39mexecute(sql, [38;5;241m*[39margs)
+[0;32m   2673[0m     [38;5;28;01mreturn[39;00m cur
+
+[1;31mOperationalError[0m: no such table: employees
+
+The above exception was the direct cause of the following exception:
+
+[1;31mDatabaseError[0m                             Traceback (most recent call last)
+Cell [1;32mIn[1], line 226[0m
+[0;32m    223[0m         run_experiment(df_engineered, y, set_name, features)
+[0;32m    225[0m [38;5;28;01mif[39;00m [38;5;18m__name__[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124m__main__[39m[38;5;124m"[39m:
+[1;32m--> 226[0m     main()
+
+Cell [1;32mIn[1], line 208[0m, in [0;36mmain[1;34m()[0m
+[0;32m    205[0m [38;5;28;01mdef[39;00m [38;5;21mmain[39m():
+[0;32m    206[0m     [38;5;66;03m# Load data[39;00m
+[0;32m    207[0m     logger[38;5;241m.[39minfo([38;5;124m"[39m[38;5;124mLoading data...[39m[38;5;124m"[39m)
+[1;32m--> 208[0m     df [38;5;241m=[39m load_base_data()
+[0;32m    210[0m     [38;5;66;03m# Engineer features[39;00m
+[0;32m    211[0m     logger[38;5;241m.[39minfo([38;5;124m"[39m[38;5;124mEngineering features...[39m[38;5;124m"[39m)
+
+Cell [1;32mIn[1], line 50[0m, in [0;36mload_base_data[1;34m()[0m
+[0;32m     28[0m conn [38;5;241m=[39m sqlite3[38;5;241m.[39mconnect([38;5;124m'[39m[38;5;124mmental_health_final.db[39m[38;5;124m'[39m)
+[0;32m     29[0m query [38;5;241m=[39m [38;5;124m"""[39m
+[0;32m     30[0m [38;5;124mSELECT [39m
+[0;32m     31[0m [38;5;124m    e.age,[39m
+[1;32m   (...)[0m
+[0;32m     48[0m [38;5;124mLEFT JOIN workplace_communication wc ON e.employee_id = wc.employee_id[39m
+[0;32m     49[0m [38;5;124m[39m[38;5;124m"""[39m
+[1;32m---> 50[0m [38;5;28;01mreturn[39;00m pd[38;5;241m.[39mread_sql_query(query, conn)
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:526[0m, in [0;36mread_sql_query[1;34m(sql, con, index_col, coerce_float, params, parse_dates, chunksize, dtype, dtype_backend)[0m
+[0;32m    523[0m [38;5;28;01massert[39;00m dtype_backend [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m lib[38;5;241m.[39mno_default
+[0;32m    525[0m [38;5;28;01mwith[39;00m pandasSQL_builder(con) [38;5;28;01mas[39;00m pandas_sql:
+[1;32m--> 526[0m     [38;5;28;01mreturn[39;00m pandas_sql[38;5;241m.[39mread_query(
+[0;32m    527[0m         sql,
+[0;32m    528[0m         index_col[38;5;241m=[39mindex_col,
+[0;32m    529[0m         params[38;5;241m=[39mparams,
+[0;32m    530[0m         coerce_float[38;5;241m=[39mcoerce_float,
+[0;32m    531[0m         parse_dates[38;5;241m=[39mparse_dates,
+[0;32m    532[0m         chunksize[38;5;241m=[39mchunksize,
+[0;32m    533[0m         dtype[38;5;241m=[39mdtype,
+[0;32m    534[0m         dtype_backend[38;5;241m=[39mdtype_backend,
+[0;32m    535[0m     )
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:2736[0m, in [0;36mSQLiteDatabase.read_query[1;34m(self, sql, index_col, coerce_float, parse_dates, params, chunksize, dtype, dtype_backend)[0m
+[0;32m   2725[0m [38;5;28;01mdef[39;00m [38;5;21mread_query[39m(
+[0;32m   2726[0m     [38;5;28mself[39m,
+[0;32m   2727[0m     sql,
+[1;32m   (...)[0m
+[0;32m   2734[0m     dtype_backend: DtypeBackend [38;5;241m|[39m Literal[[38;5;124m"[39m[38;5;124mnumpy[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;124m"[39m[38;5;124mnumpy[39m[38;5;124m"[39m,
+[0;32m   2735[0m ) [38;5;241m-[39m[38;5;241m>[39m DataFrame [38;5;241m|[39m Iterator[DataFrame]:
+[1;32m-> 2736[0m     cursor [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mexecute(sql, params)
+[0;32m   2737[0m     columns [38;5;241m=[39m [col_desc[[38;5;241m0[39m] [38;5;28;01mfor[39;00m col_desc [38;5;129;01min[39;00m cursor[38;5;241m.[39mdescription]
+[0;32m   2739[0m     [38;5;28;01mif[39;00m chunksize [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:2684[0m, in [0;36mSQLiteDatabase.execute[1;34m(self, sql, params)[0m
+[0;32m   2681[0m     [38;5;28;01mraise[39;00m ex [38;5;28;01mfrom[39;00m [38;5;21;01minner_exc[39;00m
+[0;32m   2683[0m ex [38;5;241m=[39m DatabaseError([38;5;124mf[39m[38;5;124m"[39m[38;5;124mExecution failed on sql [39m[38;5;124m'[39m[38;5;132;01m{[39;00msql[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m: [39m[38;5;132;01m{[39;00mexc[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[1;32m-> 2684[0m [38;5;28;01mraise[39;00m ex [38;5;28;01mfrom[39;00m [38;5;21;01mexc[39;00m
+
+[1;31mDatabaseError[0m: Execution failed on sql '
+    SELECT 
+        e.age,
+        e.gender,
+        e.country,
+        emp.company_size,
+        emp.is_tech_company,
+        emp.work_remotely,
+        mhb.has_mental_health_benefits,
+        mhh.current_disorder,
+        mhh.sought_treatment,
+        wc.discuss_with_supervisor,
+        wc.discuss_with_coworkers,
+        wc.observed_negative_consequences,
+        wc.interferes_with_work
+    FROM employees e
+    LEFT JOIN employment emp ON e.employee_id = emp.employee_id
+    LEFT JOIN mental_health_benefits mhb ON e.employee_id = mhb.employee_id
+    LEFT JOIN mental_health_history mhh ON e.employee_id = mhh.employee_id
+    LEFT JOIN workplace_communication wc ON e.employee_id = wc.employee_id
+    ': no such table: employees
+

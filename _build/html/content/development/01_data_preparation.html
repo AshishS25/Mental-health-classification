@@ -30,13 +30,22 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/theme.css?v=a243ae73" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -61,6 +70,21 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/development/01_data_preparation';</script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/language_data.js?v=d4673a71"></script>
+    <script src="../../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Model Development" href="02_model_development.html" />
@@ -1392,7 +1416,7 @@ Database connection closed.
 2                 0         6-25                1        Always  
 3                 1       26-100                1     Sometimes  
 4                 0         6-25                0     Sometimes  
-Total records: 3717
+Total records: 4956
 
 Mental Health Benefits Data:
    employee_id                   country       has_mental_health_benefits  \
@@ -1408,7 +1432,7 @@ Mental Health Benefits Data:
 2                     No                      No  Neither easy nor difficult  
 3                     No                      No               Somewhat easy  
 4                    Yes                      No  Neither easy nor difficult  
-Total records: 3717
+Total records: 4956
 
 Mental Health History and Impact Data:
    employee_id  age  gender family_history past_disorder current_disorder  \
@@ -1424,7 +1448,7 @@ Mental Health History and Impact Data:
 2                 1  Not applicable to me  
 3                 1             Sometimes  
 4                 1             Sometimes  
-Total records: 3717
+Total records: 4956
 
 Workplace Communication Data:
    employee_id  is_self_employed  is_tech_company discuss_with_supervisor  \
@@ -1447,9 +1471,10 @@ Workplace Communication Data:
 2  Neither easy nor difficult  
 3               Somewhat easy  
 4  Neither easy nor difficult  
-Total records: 3717
-
-Comprehensive Analysis Data:
+Total records: 4956
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Comprehensive Analysis Data:
    employee_id  age  gender                   country company_size  \
 0            1   39    Male            United Kingdom       26-100   
 1            2   29    male  United States of America         6-25   
@@ -1477,7 +1502,7 @@ Comprehensive Analysis Data:
 2                   Maybe                             No  
 3                     Yes                             No  
 4                      No                             No  
-Total records: 3717
+Total records: 4956
 </pre></div>
 </div>
 </div>

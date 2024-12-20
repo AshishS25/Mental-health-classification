@@ -30,13 +30,22 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/theme.css?v=a243ae73" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -61,6 +70,21 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/development/02_model_development';</script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/language_data.js?v=d4673a71"></script>
+    <script src="../../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Feature Engineering" href="03_feature_engineering.html" />
@@ -563,24 +587,24 @@ Australia                   0.028249
 Name: proportion, dtype: float64
 </pre></div>
 </div>
-<img alt="../../_images/6c694132bd4b6ed8b3f34a965da285da6feea2545f95a854bf2fb1da89b20c8e.png" src="../../_images/6c694132bd4b6ed8b3f34a965da285da6feea2545f95a854bf2fb1da89b20c8e.png" />
+<img alt="../../_images/45628888bb0e68eeb32c387404dd83ca135a5ee413cca46754d13ee2a5f8e93a.png" src="../../_images/45628888bb0e68eeb32c387404dd83ca135a5ee413cca46754d13ee2a5f8e93a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set distribution:
 sought_treatment
-1    0.610831
-0    0.389169
+1    0.610999
+0    0.389001
 Name: proportion, dtype: float64
 
 Test set distribution:
 sought_treatment
-1    0.611559
-0    0.388441
+1    0.610887
+0    0.389113
 Name: proportion, dtype: float64
 
 Dataset shapes:
-X_train: (2973, 87)
-X_test: (744, 87)
-y_train: (2973,)
-y_test: (744,)
+X_train: (3964, 87)
+X_test: (992, 87)
+y_train: (3964,)
+y_test: (992,)
 </pre></div>
 </div>
 </div>
@@ -686,7 +710,7 @@ y_test: (744,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "dd7c25a11fa74f1396422b08d832a108"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ec9f1582079349de9faa4ac19550b822"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8d2d544d4d8d4a559d172d168f8d86b9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3ed1915eb0d8464c8195a156f0f48468"}</script><img alt="../../_images/eb68b0552f299ae9f09d192e27fc619e9b4bd1dffb61cc55631f73df86301c5a.png" src="../../_images/eb68b0552f299ae9f09d192e27fc619e9b4bd1dffb61cc55631f73df86301c5a.png" />
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b14b03d4f523405cb2d2ece41ca549b2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ee2511c824024cf8aaba7db0cc8d4429"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "15caa5651a83468d9bda306058533648"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1c6e0dd3dd7a481c96478cbaf20775f7"}</script><img alt="../../_images/1de768702afb9467763d700816350d62f92d648433369aa1ad7365296570dc20.png" src="../../_images/1de768702afb9467763d700816350d62f92d648433369aa1ad7365296570dc20.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Strongest Feature Correlations:
 
 Top 15 Feature Correlations:
@@ -708,19 +732,19 @@ knows_benefits_options - company_size: 0.186
 
 Numerical Variables Summary:
        employee_id          age       gender      country  company_size  \
-count  3717.000000  3717.000000  3717.000000  3717.000000   3717.000000   
-mean   1859.000000    34.576271     4.168684     1.240517      1.455206   
-std    1073.149803    11.830700     9.236127     1.067045      1.481660   
+count  4956.000000  4956.000000  4956.000000  4956.000000   4956.000000   
+mean   2478.500000    34.576271     4.168684     1.240517      1.455206   
+std    1430.818297    11.830302     9.235816     1.067009      1.481610   
 min       1.000000     3.000000     0.000000     0.000000      0.000000   
-25%     930.000000    28.000000     0.000000     1.000000      0.000000   
-50%    1859.000000    33.000000     1.000000     1.000000      1.000000   
-75%    2788.000000    39.000000     4.000000     1.000000      3.000000   
-max    3717.000000   323.000000    66.000000     5.000000      5.000000   
+25%    1239.750000    28.000000     0.000000     1.000000      0.000000   
+50%    2478.500000    33.000000     1.000000     1.000000      1.000000   
+75%    3717.250000    39.000000     4.000000     1.000000      3.000000   
+max    4956.000000   323.000000    66.000000     5.000000      5.000000   
 
        is_tech_company  work_remotely  has_mental_health_benefits  \
-count      3717.000000    3717.000000                 3717.000000   
+count      4956.000000    4956.000000                 4956.000000   
 mean          0.808717       0.711057                    1.992736   
-std           0.393364       0.829631                    0.745782   
+std           0.393351       0.829603                    0.745757   
 min           0.000000       0.000000                    0.000000   
 25%           1.000000       0.000000                    2.000000   
 50%           1.000000       0.000000                    2.000000   
@@ -728,9 +752,9 @@ min           0.000000       0.000000                    0.000000
 max           1.000000       2.000000                    3.000000   
 
        knows_benefits_options  mental_health_resources  leave_request_ease  \
-count             3717.000000              3717.000000         3717.000000   
+count             4956.000000              4956.000000         4956.000000   
 mean                 0.741727                 0.692494            2.012914   
-std                  0.832930                 0.825378            1.612266   
+std                  0.832902                 0.825350            1.612212   
 min                  0.000000                 0.000000            0.000000   
 25%                  0.000000                 0.000000            1.000000   
 50%                  0.000000                 0.000000            1.000000   
@@ -738,9 +762,9 @@ min                  0.000000                 0.000000            0.000000
 max                  2.000000                 2.000000            5.000000   
 
        family_history  current_disorder  sought_treatment  \
-count     3717.000000       3717.000000       3717.000000   
+count     4956.000000       4956.000000       4956.000000   
 mean         0.862793          0.868442          0.610977   
-std          0.703295          0.746118          0.487594   
+std          0.703272          0.746093          0.487578   
 min          0.000000          0.000000          0.000000   
 25%          0.000000          0.000000          0.000000   
 50%          1.000000          1.000000          1.000000   
@@ -748,9 +772,9 @@ min          0.000000          0.000000          0.000000
 max          2.000000          2.000000          1.000000   
 
        discuss_with_supervisor  discuss_with_coworkers  \
-count              3717.000000             3717.000000   
+count              4956.000000             4956.000000   
 mean                  0.736077                0.731235   
-std                   0.807008                0.855002   
+std                   0.806981                0.854974   
 min                   0.000000                0.000000   
 25%                   0.000000                0.000000   
 50%                   1.000000                0.000000   
@@ -758,9 +782,9 @@ min                   0.000000                0.000000
 max                   2.000000                2.000000   
 
        observed_negative_consequences  interferes_with_work  
-count                     3717.000000           3717.000000  
+count                     4956.000000           4956.000000  
 mean                         0.069411              1.175948  
-std                          0.254186              1.142077  
+std                          0.254177              1.142039  
 min                          0.000000              0.000000  
 25%                          0.000000              0.000000  
 50%                          0.000000              1.000000  
@@ -1139,13 +1163,13 @@ Name: proportion, dtype: float64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Preprocessing data...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Data loaded and preprocessed. Shape: (3717, 9)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Data loaded and preprocessed. Shape: (4956, 9)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Train set shape: (2973, 8)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Train set shape: (3964, 8)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Test set shape: (744, 8)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Test set shape: (992, 8)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:
@@ -1162,33 +1186,33 @@ Running experiment with standard scaler...
   warnings.warn(
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024/12/20 21:24:01 WARNING mlflow.utils.requirements_utils: Detected one or more mismatches between the model&#39;s dependencies and the current Python environment:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024/12/21 01:27:26 WARNING mlflow.utils.requirements_utils: Detected one or more mismatches between the model&#39;s dependencies and the current Python environment:
  - mlflow (current: 2.18.0, required: mlflow==2.19.0)
 To fix the mismatches, call `mlflow.pyfunc.get_model_dependencies(model_uri)` to fetch the model&#39;s environment and install dependencies using the resulting environment file.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024/12/20 21:24:01 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024/12/21 01:27:26 WARNING mlflow.models.model: Model logged without a signature and input example. Please set `input_example` parameter when logging the model to auto infer the model signature.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Experiment with standard scaler completed:
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:F1 Score: 0.8018
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:F1 Score: 0.8040
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Accuracy: 0.7608
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Accuracy: 0.7651
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Precision: 0.8126
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Precision: 0.8199
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Recall: 0.7912
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Recall: 0.7888
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Confusion Matrix: TN=206, FP=83, FN=95, TP=360
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:Confusion Matrix: TN=281, FP=105, FN=128, TP=478
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🏃 View run mental_health_standard_scaler at: https://dagshub.com/ashiashish100/my-first-repo.mlflow/#/experiments/0/runs/85492a6ce2df4c2faf80e6a4e96fa00b
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🏃 View run mental_health_standard_scaler at: https://dagshub.com/ashiashish100/my-first-repo.mlflow/#/experiments/0/runs/d8591a1011a948d4a9a2ead444c0ce05
 🧪 View experiment at: https://dagshub.com/ashiashish100/my-first-repo.mlflow/#/experiments/0
 </pre></div>
 </div>
@@ -1206,7 +1230,7 @@ Running experiment with minmax scaler...
   warnings.warn(
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🏃 View run mental_health_minmax_scaler at: https://dagshub.com/ashiashish100/my-first-repo.mlflow/#/experiments/0/runs/0a9a23ad571b41289f61394832d81d9d
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🏃 View run mental_health_minmax_scaler at: https://dagshub.com/ashiashish100/my-first-repo.mlflow/#/experiments/0/runs/87a3f311f5b94aee904df5e8ef6396f8
 🧪 View experiment at: https://dagshub.com/ashiashish100/my-first-repo.mlflow/#/experiments/0
 </pre></div>
 </div>

@@ -30,13 +30,22 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=fb9458d3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/theme.css?v=a243ae73" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -61,6 +70,21 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/deployment/05_streamlit_app';</script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/language_data.js?v=d4673a71"></script>
+    <script src="../../_static/searchtools.js?v=63a53a7d"></script>
+    <script src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="../../_static/scripts/fontawesome.js?v=9b125980"></script>
+    <script src="../../_static/scripts/pydata-sphinx-theme.js?v=a1eb5d9f"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="Model Experiments" href="04_deploy.html" />
@@ -540,224 +564,224 @@ Navigate: <a class="reference internal" href="04_deploy.html"><span class="std s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.059 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.512 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.061 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.516 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.529 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.956 
   <span class=" -Color -Color-Bold -Color-Bold-Yellow">Warning:</span> to view this Streamlit app on a browser, run it with the following
   command:
 
     streamlit run C:\Users\ASHISH\anaconda3\Lib\site-packages\ipykernel_launcher.py [ARGUMENTS]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.530 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.957 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.531 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.958 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.533 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.959 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.534 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.960 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.536 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.961 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.537 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.962 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.538 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.965 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.539 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.967 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.540 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.968 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.540 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.970 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.541 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.971 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.542 Session state does not function when running a script without `streamlit run`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.971 Session state does not function when running a script without `streamlit run`
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.543 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.973 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.545 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.974 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.546 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.975 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.547 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.976 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.548 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.977 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.550 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.978 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.551 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.978 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.551 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.979 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.552 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.980 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.553 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.980 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.554 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.981 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.555 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.981 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.556 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.983 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.557 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.984 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.558 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.985 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.559 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.986 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.560 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.987 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.561 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.987 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.562 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.989 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.562 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.990 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.563 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.990 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.564 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.992 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.565 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.992 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.565 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.993 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.566 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.994 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.567 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.994 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.567 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.995 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.568 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.996 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.569 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.996 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.570 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.998 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.571 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.999 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.572 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:35.999 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.573 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.000 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.576 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.000 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.577 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.002 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.577 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.002 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.578 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.003 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.579 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.003 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.580 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.004 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.580 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.005 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.581 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.005 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.582 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.006 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.582 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.007 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.584 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.007 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.584 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.008 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.585 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.008 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.586 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.009 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.587 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.009 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.588 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.010 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.589 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.010 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.589 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.011 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.590 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.011 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.591 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.012 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.592 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.016 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.593 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.017 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.594 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.017 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-20 21:23:16.595 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-21 01:26:36.018 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeltaGenerator(_form_data=FormData(form_id=&#39;prediction_form&#39;))

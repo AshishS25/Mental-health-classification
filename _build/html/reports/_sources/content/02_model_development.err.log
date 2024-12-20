@@ -1,0 +1,213 @@
+Traceback (most recent call last):
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\jupyter_core\utils\__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ASHISH\anaconda3\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\ASHISH\anaconda3\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+#Splitting to training and testing data
+import sqlite3
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Connect and get comprehensive data
+conn = sqlite3.connect('mental_health_final.db')
+query = """
+SELECT 
+    e.employee_id,
+    e.age,
+    e.gender,
+    e.country,
+    emp.company_size,
+    emp.is_tech_company,
+    emp.work_remotely,
+    mhb.has_mental_health_benefits,
+    mhh.current_disorder,
+    mhh.sought_treatment,
+    wc.discuss_with_supervisor
+FROM employees e
+LEFT JOIN employment emp ON e.employee_id = emp.employee_id
+LEFT JOIN mental_health_benefits mhb ON e.employee_id = mhb.employee_id
+LEFT JOIN mental_health_history mhh ON e.employee_id = mhh.employee_id
+LEFT JOIN workplace_communication wc ON e.employee_id = wc.employee_id
+"""
+
+df = pd.read_sql_query(query, conn)
+conn.close()
+
+# Explore potential target variables distribution
+print("\nDistribution of key variables:")
+print("\nCurrent Mental Health Disorder:")
+print(df['current_disorder'].value_counts(normalize=True))
+
+print("\nSought Treatment:")
+print(df['sought_treatment'].value_counts(normalize=True))
+
+print("\nTech Company Distribution:")
+print(df['is_tech_company'].value_counts(normalize=True))
+
+# Check gender distribution
+print("\nGender Distribution:")
+print(df['gender'].value_counts(normalize=True))
+
+# Check country distribution
+print("\nCountry Distribution:")
+print(df['country'].value_counts(normalize=True))
+
+# Visualize distributions
+plt.figure(figsize=(15, 10))
+
+# Plot 1: Current Disorder Distribution
+plt.subplot(2, 2, 1)
+sns.countplot(data=df, x='current_disorder')
+plt.title('Distribution of Current Mental Health Disorder')
+plt.xticks(rotation=45)
+
+# Plot 2: Sought Treatment Distribution
+plt.subplot(2, 2, 2)
+sns.countplot(data=df, x='sought_treatment')
+plt.title('Distribution of Treatment Seeking')
+plt.xticks(rotation=45)
+
+# Plot 3: Tech Company Distribution
+plt.subplot(2, 2, 3)
+sns.countplot(data=df, x='is_tech_company')
+plt.title('Distribution of Tech vs Non-Tech Companies')
+plt.xticks(rotation=45)
+
+# Plot 4: Gender Distribution
+plt.subplot(2, 2, 4)
+sns.countplot(data=df, y='gender')
+plt.title('Gender Distribution')
+
+plt.tight_layout()
+plt.show()
+
+# Based on exploration, we'll use 'sought_treatment' as target variable
+# and stratify by this and gender to maintain distributions
+
+# Prepare features and target
+X = df.drop(['employee_id', 'sought_treatment'], axis=1)
+y = df['sought_treatment']
+
+# Handle categorical variables
+categorical_cols = ['gender', 'country', 'company_size', 'work_remotely', 
+                   'has_mental_health_benefits', 'current_disorder', 
+                   'discuss_with_supervisor']
+
+# Create dummy variables
+X = pd.get_dummies(X, columns=categorical_cols, drop_first=True)
+
+# Perform train-test split with stratification
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+# Verify stratification
+print("\nTraining set distribution:")
+print(y_train.value_counts(normalize=True))
+print("\nTest set distribution:")
+print(y_test.value_counts(normalize=True))
+
+# Save the splits
+print("\nDataset shapes:")
+print(f"X_train: {X_train.shape}")
+print(f"X_test: {X_test.shape}")
+print(f"y_train: {y_train.shape}")
+print(f"y_test: {y_test.shape}")
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mOperationalError[0m                          Traceback (most recent call last)
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:2672[0m, in [0;36mSQLiteDatabase.execute[1;34m(self, sql, params)[0m
+[0;32m   2671[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 2672[0m     cur[38;5;241m.[39mexecute(sql, [38;5;241m*[39margs)
+[0;32m   2673[0m     [38;5;28;01mreturn[39;00m cur
+
+[1;31mOperationalError[0m: no such table: employees
+
+The above exception was the direct cause of the following exception:
+
+[1;31mDatabaseError[0m                             Traceback (most recent call last)
+Cell [1;32mIn[1], line 31[0m
+[0;32m     10[0m conn [38;5;241m=[39m sqlite3[38;5;241m.[39mconnect([38;5;124m'[39m[38;5;124mmental_health_final.db[39m[38;5;124m'[39m)
+[0;32m     11[0m query [38;5;241m=[39m [38;5;124m"""[39m
+[0;32m     12[0m [38;5;124mSELECT [39m
+[0;32m     13[0m [38;5;124m    e.employee_id,[39m
+[1;32m   (...)[0m
+[0;32m     28[0m [38;5;124mLEFT JOIN workplace_communication wc ON e.employee_id = wc.employee_id[39m
+[0;32m     29[0m [38;5;124m"""[39m
+[1;32m---> 31[0m df [38;5;241m=[39m pd[38;5;241m.[39mread_sql_query(query, conn)
+[0;32m     32[0m conn[38;5;241m.[39mclose()
+[0;32m     34[0m [38;5;66;03m# Explore potential target variables distribution[39;00m
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:526[0m, in [0;36mread_sql_query[1;34m(sql, con, index_col, coerce_float, params, parse_dates, chunksize, dtype, dtype_backend)[0m
+[0;32m    523[0m [38;5;28;01massert[39;00m dtype_backend [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m lib[38;5;241m.[39mno_default
+[0;32m    525[0m [38;5;28;01mwith[39;00m pandasSQL_builder(con) [38;5;28;01mas[39;00m pandas_sql:
+[1;32m--> 526[0m     [38;5;28;01mreturn[39;00m pandas_sql[38;5;241m.[39mread_query(
+[0;32m    527[0m         sql,
+[0;32m    528[0m         index_col[38;5;241m=[39mindex_col,
+[0;32m    529[0m         params[38;5;241m=[39mparams,
+[0;32m    530[0m         coerce_float[38;5;241m=[39mcoerce_float,
+[0;32m    531[0m         parse_dates[38;5;241m=[39mparse_dates,
+[0;32m    532[0m         chunksize[38;5;241m=[39mchunksize,
+[0;32m    533[0m         dtype[38;5;241m=[39mdtype,
+[0;32m    534[0m         dtype_backend[38;5;241m=[39mdtype_backend,
+[0;32m    535[0m     )
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:2736[0m, in [0;36mSQLiteDatabase.read_query[1;34m(self, sql, index_col, coerce_float, parse_dates, params, chunksize, dtype, dtype_backend)[0m
+[0;32m   2725[0m [38;5;28;01mdef[39;00m [38;5;21mread_query[39m(
+[0;32m   2726[0m     [38;5;28mself[39m,
+[0;32m   2727[0m     sql,
+[1;32m   (...)[0m
+[0;32m   2734[0m     dtype_backend: DtypeBackend [38;5;241m|[39m Literal[[38;5;124m"[39m[38;5;124mnumpy[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;124m"[39m[38;5;124mnumpy[39m[38;5;124m"[39m,
+[0;32m   2735[0m ) [38;5;241m-[39m[38;5;241m>[39m DataFrame [38;5;241m|[39m Iterator[DataFrame]:
+[1;32m-> 2736[0m     cursor [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mexecute(sql, params)
+[0;32m   2737[0m     columns [38;5;241m=[39m [col_desc[[38;5;241m0[39m] [38;5;28;01mfor[39;00m col_desc [38;5;129;01min[39;00m cursor[38;5;241m.[39mdescription]
+[0;32m   2739[0m     [38;5;28;01mif[39;00m chunksize [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\io\sql.py:2684[0m, in [0;36mSQLiteDatabase.execute[1;34m(self, sql, params)[0m
+[0;32m   2681[0m     [38;5;28;01mraise[39;00m ex [38;5;28;01mfrom[39;00m [38;5;21;01minner_exc[39;00m
+[0;32m   2683[0m ex [38;5;241m=[39m DatabaseError([38;5;124mf[39m[38;5;124m"[39m[38;5;124mExecution failed on sql [39m[38;5;124m'[39m[38;5;132;01m{[39;00msql[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m: [39m[38;5;132;01m{[39;00mexc[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[1;32m-> 2684[0m [38;5;28;01mraise[39;00m ex [38;5;28;01mfrom[39;00m [38;5;21;01mexc[39;00m
+
+[1;31mDatabaseError[0m: Execution failed on sql '
+SELECT 
+    e.employee_id,
+    e.age,
+    e.gender,
+    e.country,
+    emp.company_size,
+    emp.is_tech_company,
+    emp.work_remotely,
+    mhb.has_mental_health_benefits,
+    mhh.current_disorder,
+    mhh.sought_treatment,
+    wc.discuss_with_supervisor
+FROM employees e
+LEFT JOIN employment emp ON e.employee_id = emp.employee_id
+LEFT JOIN mental_health_benefits mhb ON e.employee_id = mhb.employee_id
+LEFT JOIN mental_health_history mhh ON e.employee_id = mhh.employee_id
+LEFT JOIN workplace_communication wc ON e.employee_id = wc.employee_id
+': no such table: employees
+

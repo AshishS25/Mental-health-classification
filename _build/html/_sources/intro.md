@@ -8,6 +8,7 @@ This project implements a machine learning solution to predict mental health tre
 - [Docker Hub Container](https://hub.docker.com/r/ashish095/mental-health-api)
 - [Deployed API](http://159.65.164.99)
 - [Streamlit App](https://mental-health-appl.streamlit.app/)
+- [Project Demo Video](https://buffalo.box.com/s/pgwlqjlzchaub2ucuhogzi87nh84w7lx)
 
 ## Table of Contents
 
@@ -22,12 +23,12 @@ This project implements a machine learning solution to predict mental health tre
 
 ## Project Files
 - Data Files:
-  - mental_health.csv
-  - mental_health_cleaned_general.csv
+    - mental_health.csv
+    - mental_health_cleaned_general.csv
 - Model Files:
-  - final_mental_health_model.joblib
-  - mental_health_final.db
+    - final_mental_health_model.joblib
+    - mental_health_final.db
 - Analysis Files:
-  - correlation_matrix.png
-  - mental_health_survey_analysis.png
-  - mental_health_profile_report.html
+    - correlation_matrix.png
+    - mental_health_survey_analysis.png
+    - mental_health_profile_report.html
